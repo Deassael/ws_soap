@@ -7,7 +7,7 @@ try{
         'trace' => true
     );
 
-    $cliente new SoapClient(null,$opciones);
+    $client = new SoapClient(null,$opciones);
     if(isset($_GET["idz"])){
         $idz = intval($_GET["idz"]);
         if($idz > 0){
@@ -19,19 +19,24 @@ try{
 
     $arreglo = array();
 
-    foreach($respuestas as $respuestas){
+    foreach($respuestas as $respuesta){
         $arreglo[]["departamento"] = array(
             "id" => $respuesta["id"],
             "nombre" => $respuesta["departamento"]
         );
     }
-    $arr_head = getAllheaders();
-    if($arr_head["Accept"] == "application/xml"){
+    $arr_headers = getAllheaders();
+    if($arr_headers["Accept"] == "Application/xml"){
         $documento = creaxml("departamento",$arreglo);
+        header("Content-type: Application/xml");
         echo($documento);
-    }esleif($arr_head["Accept"] == "application/json"){
-        header()
+    }elseif($arr_headers["Accept"] == "Application/json"){
+        header("Content-type: Application/json");
+        echo(json_encode($respuesta));
+    }else{
+        echo("ESPECIFIQUE EL FORMATO DE DATOS QUE USTED ESPERA");
     }
-}catch()
-
+}catch(Exception $e){
+    echo('Error:' .$e->getMessage());
+}
 ?>

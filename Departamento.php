@@ -4,7 +4,7 @@ require_once("conn.php");
 class Departamento{
     public $last;
     public function obtenerDepartamentos(){
-        $db = new DB('mysql:host=localhost;dbname=catalogos;charset=utf8mb4',"root","");
+        $db = new DB('mysql:host=localhost;dbname=catalogos;charset=utf8mb4',"root","admin");
         $sql = 'SELECT 
                 d.id_departamento as id,
                 d.nombre_departamento as departamento,
@@ -18,7 +18,7 @@ class Departamento{
     }
 
     public function obtenerDepartamentosPorZona($idzona){
-        $db = new DB('mysql:host=localhost;dbname=catalogos;charset=utf8mb4',"root","");
+        $db = new DB('mysql:host=localhost;dbname=catalogos;charset=utf8mb4',"root","admin");
         $sql = 'SELECT 
                     d.id_departamento as id,
                     d.nombre_departamento as departamento,
@@ -36,7 +36,7 @@ class Departamento{
 
 
     public function obtenerDepartamento($iddepto){
-        $db = new DB('mysql:host=localhost;dbname=catalogos;charset=utf8mb4',"root","");
+        $db = new DB('mysql:host=localhost;dbname=catalogos;charset=utf8mb4',"root","admin");
         $sql = 'SELECT 
                     d.id_departamento as id,
                     d.nombre_departamento as departamento,
