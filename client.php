@@ -26,13 +26,13 @@ try{
         );
     }
     $arr_headers = getAllheaders();
-    if($arr_headers["Accept"] == "Application/xml"){
+    if($arr_headers["Accept"] == "application/xml"){
         $documento = creaxml("departamento",$arreglo);
-        header("Content-type: Application/xml");
+        header("Content-type: application/xml");
         echo($documento);
-    }elseif($arr_headers["Accept"] == "Application/json"){
-        header("Content-type: Application/json");
-        echo(json_encode($respuesta));
+    }elseif($arr_headers["Accept"] == "application/json"){
+        header("Content-type: application/json");
+        echo(json_encode($respuestas));
     }else{
         echo("ESPECIFIQUE EL FORMATO DE DATOS QUE USTED ESPERA");
     }
